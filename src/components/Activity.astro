@@ -1,0 +1,40 @@
+---
+import { ACTIVITIES } from '../data/activities';
+---
+  <section id="activity">
+    <svg class="balloons" viewBox="0 0 96 120" aria-hidden="true">
+      <g fill="none" stroke="#8a8170" stroke-width="0.9" stroke-linecap="round">
+        <ellipse cx="32" cy="28" rx="13" ry="16"/><path d="M32 44 L29 48 L35 48 Z"/><path d="M32 48 Q28 72 34 96"/>
+        <ellipse cx="66" cy="42" rx="11" ry="13"/><path d="M66 55 L63 59 L69 59 Z"/><path d="M66 59 Q70 80 64 100"/>
+      </g>
+      <g fill="none" stroke="#a8443a" stroke-width="0.9" stroke-linecap="round">
+        <ellipse cx="48" cy="60" rx="10" ry="12"/><path d="M48 72 L45 76 L51 76 Z"/><path d="M48 76 Q45 94 50 112"/>
+      </g>
+    </svg>
+    <div class="head"><span class="bar"></span><h2>Activity</h2></div>
+    <div class="log">
+      {ACTIVITIES.map((item) => (
+        <div class="item" data-activity-item>
+          <span class="when">{item.when}</span>
+          <span class="what">
+            <span class="ja">{item.ja}{item.italicJa && <> <em>{item.italicJa}</em></>}</span>
+            <span class="en">{item.en}{item.italicEn && <> <em>{item.italicEn}</em></>}</span>
+          </span>
+        </div>
+      ))}
+    </div>
+    <div id="activity-pg-wrap"></div>
+  </section>
+
+<script>
+  import { ACTIVITY_PER_PAGE } from '../data/activities';
+  import { initPagination } from '../lib/pagination-client';
+
+  initPagination({
+    sectionId: 'activity',
+    wrapId: 'activity-pg-wrap',
+    itemSelector: '[data-activity-item]',
+    param: 'activity_page',
+    perPage: ACTIVITY_PER_PAGE,
+  });
+</script>

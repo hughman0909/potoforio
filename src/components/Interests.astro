@@ -1,0 +1,32 @@
+  <section id="interests">
+    <svg class="deco" style="top:24px;right:26px;width:32px" viewBox="0 0 40 40" aria-hidden="true">
+      <path d="M20 4 L24 16 L36 20 L24 24 L20 36 L16 24 L4 20 L16 16 Z" fill="none" stroke="#9aa6b4" stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+    <div class="head"><span class="bar"></span><h2>Interests</h2></div>
+    <div class="int-block">
+      <span class="cat">General interests</span>
+      <div class="tags">
+        <span class="tag"><span class="ja">音楽</span><span class="en">Music</span></span>
+        <span class="tag"><span class="ja">サッカー</span><span class="en">Football</span></span>
+        <span class="tag"><span class="ja">セキュリティ</span><span class="en">Security</span></span>
+      </div>
+      <a class="spotify" href="https://open.spotify.com/track/7wAhg1bclLYzOjAn2eCxPz" target="_blank" rel="noopener">
+        <span class="note">♪</span> 相対性理論 — さわやか会社員 <span class="lk">Spotify ↗</span>
+      </a>
+    </div>
+    <div class="divider"></div>
+    <div class="int-block">
+      <span class="cat">Technical interests</span>
+      <div class="tags"><span class="tag">Reverse Engineering</span><span class="tag">Malware Analysis</span><span class="tag">Forensics</span><span class="tag">Pwn</span><span class="tag">Web Security</span></div>
+    </div>
+    <div class="asm-card" aria-label="hello world を出力するアセンブリと、その実行結果">
+      <div class="file">hello.asm</div>
+      <pre><span class="k">_start:</span>
+  mov  rax, 1
+  mov  rdi, 1
+  lea  rsi, [msg]
+  mov  rdx, 13
+  syscall</pre>
+      <span class="asm-out" aria-hidden="true">Hello, World!</span>
+    </div>
+  </section>

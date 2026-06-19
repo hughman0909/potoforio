@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+const title = '山口 暖 — portfolio';
+const description = 'オフェンシブセキュリティ／マルウェア解析・リバースエンジニアリングを学ぶ学生のポートフォリオ。山口 暖 (Hinata Yamaguchi)。';
+// site が設定されていれば og:image を絶対URLにする（SNS クローラ対応）
+const ogImage = Astro.site ? new URL('og-image.png', Astro.site).href : '/og-image.png';
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="sheet">
+    <slot />
+  </main>
+  <script>
+    document.getElementById('lang-btn')?.addEventListener('click', () => {
+      document.body.classList.toggle('lang-en');
+      document.documentElement.lang = document.body.classList.contains('lang-en') ? 'en' : 'ja';
+    });
+  </script>
+</body>
+</html>

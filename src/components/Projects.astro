@@ -1,0 +1,78 @@
+---
+import { PROJECTS } from '../data/projects';
+---
+  <section id="projects">
+    <svg class="deco" style="top:22px;right:24px;width:44px" viewBox="0 0 48 44" aria-hidden="true">
+      <g fill="none" stroke="#9aa6b4" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="12" width="40" height="28" rx="3"/>
+        <path d="M4 20 L44 20"/>
+        <path d="M14 8 L14 16"/>
+        <path d="M34 8 L34 16"/>
+        <path d="M14 28 L22 28"/>
+        <path d="M14 33 L30 33"/>
+      </g>
+      <rect x="4" y="12" width="40" height="8" rx="3" fill="#f3eee1"/>
+      <path d="M4 20 L44 20" stroke="#ddd5c4" stroke-width="0.5"/>
+    </svg>
+    <div class="head"><span class="bar"></span><h2>Projects</h2></div>
+    <div class="proj-list">
+      {PROJECTS.map((proj) => (
+        <div class="proj-card" data-project-item data-tags={proj.tags.join(',')}>
+          <div class="proj-meta">
+            <span class="proj-date">{proj.date}</span>
+            {proj.tags.map((t) => <span class="proj-tag">{t}</span>)}
+          </div>
+          <h3 class="proj-title">
+            <span class="ja">{proj.titleJa}</span>
+            <span class="en">{proj.titleEn}</span>
+          </h3>
+          <p class="proj-overview">
+            <span class="ja">{proj.overviewJa}</span>
+            <span class="en">{proj.overviewEn}</span>
+          </p>
+          <div class="proj-how">
+            <span class="proj-how-label">
+              <span class="ja">どうやったか</span>
+              <span class="en">How it worked</span>
+            </span>
+            <ol class="proj-steps">
+              {proj.steps.map((step) => (
+                <li>
+                  <span class="ja"><strong>{step.labelJa}</strong> ― {step.descJa}</span>
+                  <span class="en"><strong>{step.labelEn}</strong> — {step.descEn}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div class="proj-tools">
+            {proj.tools.map((t) => <span class="tag">{t}</span>)}
+          </div>
+          {proj.links && proj.links.length > 0 && (
+            <div class="proj-links">
+              {proj.links.map((lk) => (
+                <a class="proj-link" href={lk.href} target="_blank" rel="noopener">
+                  <span class="ja">{lk.labelJa}</span>
+                  <span class="en">{lk.labelEn}</span>
+                  {' ↗'}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+    <div id="project-pg-wrap"></div>
+  </section>
+
+<script>
+  import { PROJECT_PER_PAGE } from '../data/projects';
+  import { initPagination } from '../lib/pagination-client';
+
+  initPagination({
+    sectionId: 'projects',
+    wrapId: 'project-pg-wrap',
+    itemSelector: '[data-project-item]',
+    param: 'project_page',
+    perPage: PROJECT_PER_PAGE,
+  });
+</script>
